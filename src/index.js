@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
@@ -12,19 +13,33 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { videos: [] }; // videos is a state of type array as it will have a list of videos/data
+        this.state = { 
+            selectedVideo: null,
+            videos: [] 
+        }; 
         
-        YTSearch({key: API_KEY, term: 'cartoons'}, (videos) => {
-            this.setState({ videos }); // instead of printing the objects in console we are passing the values of search to videos so that it gets updated once the search has 
-                                        // kicked off
+        this.videoSearch('surfboards');
+    }
+
+    videoSearch(term) {
+        YTSearch({key: API_KEY, term: term}, (videos) => {
+            // instead of printing the objects in console we are passing the values of search to videos so that it gets updated once the search has kicked off
+            this.setState({ 
+                videos: videos,
+                selectedVideo: videos[0] 
+            }); 
         });
     }
+    
     render() {
+        const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 300);
         return (
             <div>
-                <SearchBar />
-                <VideoDetails video={this.state.videos[0]} />
-                <VideoList videos={this.state.videos}/>
+                <SearchBar onSearchTermChange={videoSearch} />
+                <VideoDetails video={this.state.selectedVideo} />
+                <VideoList 
+                    onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+                    videos={this.state.videos}/>
             </div>
         );  
     }     
