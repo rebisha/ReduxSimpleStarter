@@ -6,6 +6,7 @@ import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetails from './components/video_detail';
+import Application from '../reduxSimpleStarter/src/components/app'
 
 const API_KEY = 'AIzaSyCCO1ojuipmZnrWThF9kV1_lSCHIZ83Lok';
 
@@ -35,11 +36,17 @@ class App extends Component {
         const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 300);
         return (
             <div>
-                <SearchBar onSearchTermChange={videoSearch} />
-                <VideoDetails video={this.state.selectedVideo} />
-                <VideoList 
-                    onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-                    videos={this.state.videos}/>
+                <div className="row mb-5">
+                    <SearchBar onSearchTermChange={videoSearch} />
+                    <VideoDetails video={this.state.selectedVideo} />
+                    <VideoList 
+                        onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+                        videos={this.state.videos} />
+                </div>
+
+                <div className="row">
+                    <Application />
+                </div>              
             </div>
         );  
     }     
