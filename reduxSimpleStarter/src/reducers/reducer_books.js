@@ -3,5 +3,5 @@ export default function() {
         { title: 'Javascript' },
         { title: 'React' },
         { title: 'Redux' }        
-    ]
+    ];
 }
