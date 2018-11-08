@@ -45,7 +45,7 @@ class App extends Component {
                 </div>
 
                 <div className="row">
-                {/*  <Application /> */}
+                    <Application /> 
                 </div>              
             </div>
         );  
