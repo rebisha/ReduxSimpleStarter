@@ -29,3 +29,8 @@
 .mb-5 {
     margin-bottom: 5rem;
 }
+
+.map {
+    height: 80vh;
+    width: 100%;
+}
