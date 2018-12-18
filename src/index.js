@@ -48,7 +48,7 @@ class App extends Component {
                     </div>
                 </Container>
 
-                <div className="row mb-5">                    
+                <div className="row">                    
                     <SimpleMap />                
                 </div>
             </Container>

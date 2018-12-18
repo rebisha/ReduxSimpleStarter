@@ -1,21 +1,44 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import GoogleMapReact from 'google-map-react';
 
-export class MapContainer extends Component {
+const AnyReactComponent = () => <div></div>;
+
+class SimpleMap extends Component {
+  static defaultProps = {
+    center: {
+      lat: -37.8136,
+      lng: 144.9631
+    },
+    zoom: 11
+  };
+
+  renderMarkers(map, maps) {
+    let marker = new maps.Marker({
+      position: myLatLng,
+      map,
+      title: 'Hello World!'
+    });
+  }
+
   render() {
     return (
-      <Map className="map"
-        google={this.props.google}
-        zoom={14}
-        initialCenter={{
-            lat: -37.8136,
-            lng: 144.9631
-        }}
-      />
+      // Important! Always set the container height explicitly
+      <div className="map">
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: 'AIzaSyAHeLNwr9sFXc4CRam2uE3kvHLVIwlNJV8' }}
+          defaultCenter={this.props.center}
+          defaultZoom={this.props.zoom}
+          onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
+        >
+          <AnyReactComponent
+            lat={59.955413}
+            lng={30.337844}
+            text={'Kreyser Avrora'}
+          />
+        </GoogleMapReact>
+      </div>
     );
   }
 }
 
-export default GoogleApiWrapper({
-    apiKey: 'AIzaSyBvPcP7ZAaeI12uhZAS3LgT6g-Gm-ekIP4'
-  })(MapContainer);
+export default SimpleMap;
