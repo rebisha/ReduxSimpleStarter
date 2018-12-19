@@ -41,6 +41,7 @@ class GoogleMapsContainer extends Component {
           google = { this.props.google }
           onClick = { this.onMapClick }
           zoom = { 11 }
+          scrollwheel = { false }
           initialCenter = {{ lat: -37.8136, lng: 144.9631 }}
         >
           {model.map((item) => (
