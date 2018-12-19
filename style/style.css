@@ -34,3 +34,7 @@
     height: 80vh !important;
     width: 100% !important;
 }
+
+.text-red{
+    color: #DC143C !important;
+}
