@@ -37,34 +37,34 @@ class GoogleMapsContainer extends Component {
 
   render() {
     return (
-        <Map className="map mb-5"
-          google = { this.props.google }
-          onClick = { this.onMapClick }
-          zoom = { 11 }
-          scrollwheel = { false }
-          initialCenter = {{ lat: -37.8136, lng: 144.9631 }}
-        >
-          {model.map((item) => (
-            <Marker
-              key = { `marker-${item.id}` }
-              onClick = { this.onMarkerClick }
-              position = {{ lat: item.lat, lng: item.lng }}
-              name = { item.name }  
-              description = { item.description }             
-            />
-          ))}      
+      <Map className="map mb-5"
+        google = { this.props.google }
+        onClick = { this.onMapClick }
+        zoom = { 11 }
+        scrollwheel = { false }
+        initialCenter = {{ lat: -37.8136, lng: 144.9631 }}
+      >
+        {model.map((item) => (
+          <Marker
+            key = { `marker-${item.id}` }
+            onClick = { this.onMarkerClick }
+            position = {{ lat: item.lat, lng: item.lng }}
+            name = { item.name }  
+            description = { item.description }             
+          />
+        ))}      
 
-          <InfoWindow
-            onOpen={this.windowHasOpened}
-            marker= { this.state.activeMarker }
-            visible= { this.state.showingInfoWindow }
-          >
-          <div className="info-window">
-            <h5 className="text-red">{this.state.selectedPlace.name}</h5>
-            <p>{this.state.selectedPlace.description}</p>
-          </div>
-          </InfoWindow>
-        </Map>
+        <InfoWindow
+          onOpen={this.windowHasOpened}
+          marker= { this.state.activeMarker }
+          visible= { this.state.showingInfoWindow }
+        >
+        <div className="info-window">
+          <h5 className="text-red">{this.state.selectedPlace.name}</h5>
+          <p>{this.state.selectedPlace.description}</p>
+        </div>
+        </InfoWindow>
+      </Map>
     );
   }
 }

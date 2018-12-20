@@ -1,0 +1,23 @@
+.form-group {
+    justify-content: center;
+    text-align: -webkit-center;
+
+    input {
+        &[type='text'],
+        &[type='email'] {
+            display: flex;
+            border-radius: 5px;
+            height: 36px;
+            border: 1px solid;
+        } 
+    }
+
+    select {
+        display: flex;
+    }
+
+    button {
+        display: flex;
+        margin: 10px;
+    }
+}

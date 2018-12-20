@@ -8,6 +8,10 @@ import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetails from './components/video_detail';
 import SimpleMap from './components/map';
+import Forms from './components/form';
+
+import './scss/creative.scss';
+
 
 const API_KEY = 'AIzaSyCCO1ojuipmZnrWThF9kV1_lSCHIZ83Lok';
 
@@ -36,22 +40,26 @@ class App extends Component {
     render() {
         const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 300);
         return (
-            <Container fluid>
-                <Container>
-                    <div className="row mb-5">
-                        <SearchBar onSearchTermChange={videoSearch} />
-                        <VideoDetails video={this.state.selectedVideo} />
-                        <VideoList 
-                            onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-                            videos={this.state.videos} 
-                        />
-                    </div>
-                </Container>
-
-                <div className="row">                    
-                    <SimpleMap />                
+            <div className="row">
+            <Container>
+                <div className="row mb-5">
+                    <SearchBar onSearchTermChange={videoSearch} />
+                    <VideoDetails video={this.state.selectedVideo} />
+                    <VideoList 
+                        onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+                        videos={this.state.videos} 
+                    />
                 </div>
             </Container>
+
+            <div className="form mb-5">
+                <Forms />
+            </div>
+
+            <div>                    
+                <SimpleMap />                
+            </div>
+            </div>
         );  
     }     
 }
