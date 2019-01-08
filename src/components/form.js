@@ -15,11 +15,11 @@ const Forms = () => {
                     <label>Email:</label>
                     <input type="email" id="Lname" />
 
-                    <label>Please Select</label>
+                    <label>Gender</label>
                     <select type="select">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option>Please Select...</option>
+                        <option>Female</option>
+                        <option>Male</option>
                     </select>
 
                     <button className="btn btn-primary" type="submit">Save</button>

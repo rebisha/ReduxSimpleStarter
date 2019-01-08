@@ -11,7 +11,7 @@ import SimpleMap from './components/map';
 import Forms from './components/form';
 
 import './scss/creative.scss';
-
+import 'bootstrap';
 
 const API_KEY = 'AIzaSyCCO1ojuipmZnrWThF9kV1_lSCHIZ83Lok';
 
