@@ -1,4 +1,7 @@
+const webpack = require('webpack');
+
 module.exports = {
+  mode: 'production',
   entry: ['./src/index.js'],
   output: {
     path: __dirname,
@@ -32,5 +35,26 @@ module.exports = {
       aggregateTimeout: 300,
       poll: 1000
     }
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default'],
+      Util: 'exports-loader?Util!bootstrap/js/dist/util',
+      Collapse: 'exports-loader?Collapse!bootstrap/js/dist/collapse',
+      Dropdown: 'exports-loader?Dropdown!bootstrap/js/dist/dropdown',
+      // ScrollSpy: 'exports-loader?ScrollSpy!bootstrap/js/dist/scrollspy',
+      Tab: 'exports-loader?Tab!bootstrap/js/dist/tab'
+      // Masonry: 'exports-loader?Masonry!masonry-layout/dist/masonry.pkgd.min',
+      // ImagesLoaded: 'exports-loader?ImagesLoaded!imagesloaded/imagesloaded.pkgd.min'
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      },
+      mode: 'production'
+    })
+  ]
 };

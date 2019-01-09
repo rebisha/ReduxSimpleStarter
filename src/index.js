@@ -10,8 +10,8 @@ import VideoDetails from './components/video_detail';
 import SimpleMap from './components/map';
 import Forms from './components/form';
 
-import './scss/creative.scss';
 import 'bootstrap';
+import './scss/creative.scss';
 
 const API_KEY = 'AIzaSyCCO1ojuipmZnrWThF9kV1_lSCHIZ83Lok';
 
@@ -40,9 +40,8 @@ class App extends Component {
     render() {
         const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 300);
         return (
-            <div className="row">
-            <Container>
-                <div className="row mb-5">
+            <Container-fluid>
+                <div className="container mb-5">
                     <SearchBar onSearchTermChange={videoSearch} />
                     <VideoDetails video={this.state.selectedVideo} />
                     <VideoList 
@@ -50,16 +49,16 @@ class App extends Component {
                         videos={this.state.videos} 
                     />
                 </div>
-            </Container>
+            
 
-            <div className="form mb-5">
+            <div className="container mb-5">
                 <Forms />
             </div>
 
             <div>                    
                 <SimpleMap />                
             </div>
-            </div>
+            </Container-fluid>
         );  
     }     
 }

@@ -1,5 +1,18 @@
-.form-group {
-    @include make-col(6);
+form {
+    @include make-row;
+    max-width: 650px;
+    margin-right: auto !important;
+    margin-left: auto !important;
+
+    @include media-breakpoint-down(md) {
+        display: table;
+    }
+
+    .form-group {
+        @include media-breakpoint-up(md) {
+            @include make-col(6);
+        }
+    }
 
     input {
         &[type='text'],
@@ -13,6 +26,7 @@
 
     select {
         display: flex;
+        width: 180px;
     }
 
     button {
